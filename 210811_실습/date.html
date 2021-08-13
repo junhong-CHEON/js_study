@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type='text/javascript'>
+        let max = Math.max(100,123);
+        document.write('<h1>최대값: ' + max + '</h>');
+        let min = Math.min(100,123)
+        document.write('<h1>최소값: ' + min + '</h>');
+        document.write('<h1>원주율: ' + Math.PI + '</h>');
+        
+        let num1 = 3.7145;
+        
+        function random(a, b){return (parseInt(Math.random() * (b-a+1)) + a)}
+        let num = random(0,9);
+        document.write('<h1>0~9사이의 난수:' + num + '</h>')
+
+        let auth = '';
+        for (let i = 0; i < 5; i++){auth += random(0,9)}
+        document.write('<h1>인증번호: ' + auth + '</h1>');
+
+        let days = ['일', '월' ,'화','수','목','금','토'];
+        let mydate = new Date();
+        let yyyy = mydate.getFullYear();
+        let mm = mydate.getMonth() + 1;
+        let dd = mydate.getDate();
+
+        let i = mydate.getDay();
+        let day = days[i];
+        let hh = mydate.getHours();
+        let mi = mydate.getMinutes();
+        let ss = mydate.getSeconds();
+        let result = yyyy + '-' + mm + '-' + dd + ' ' + day + '요일' + ' ' + hh + ':' + mi + ':' + ss;
+        console.log(result);
+        document.write('<h1>' + result + '</h1>');
+    </script>
+</body>
+</html>

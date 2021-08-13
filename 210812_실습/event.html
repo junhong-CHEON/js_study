@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event</title>
+    <style>
+        .event-box {
+            border: 5px solid #007;
+            background: #d5d5d5;
+            color : #009;
+            font-size : 32px;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .input { border: 5px solid #007; background: #d5d5d5; color: #009;}
+        .console { border: 5px solid #a0a; background: #d5d5d5; color: #505;}
+    </style>
+</head>
+<body>
+    <div id="listener" class="event-box">
+        Mouse here~!!!
+    </div>
+
+    <div id="hover" class="event-box">
+        hover!
+    </div>
+
+    <input type='text' id = 'key_listener' class='event-box input' placeholder="여기에 입력하세요." />
+    <div class="event-box console">
+        up = <span id = 'result'>0</span>, down=<span id = 'result2'>0</span>
+    </div>
+    <div class="event-box console">
+        <p>keycode = <span id = 'result3'>0</span></p> 
+        <p>enter press=<span id = 'result4'>none</span></p>
+    </div>
+    
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+
+        //마우스 이벤트
+        $("#listener").mouseenter(function() {
+            $("#listener").html("Mouse Enter");
+        });
+
+        $("#listener").mouseleave(function() {
+            $("#listener").html("Mouse Leave");
+        });
+
+        $("#listener").mousedown(function() {
+            $("#listener").html("Mouse Down");
+        });
+
+        $("#listener").mouseup(function() {
+            $("#listener").html("Mouse Up");
+        });
+        //호버
+        $("#hover").hover(
+            function(e) {
+                $("#hover").html("마우스가 들어왔습니다.");
+            },
+            function(e) {
+                $("#hover").html('마우스가 빠져나갔습니다.')
+            }
+        );
+
+        //키보드 관련 이벤트
+        let counter = {down : 0, up: 0};
+        $('#key_listener').keyup(function(e) {
+            counter.up++;
+            $('#result').html(counter.up);
+        });
+
+        $('#key_listener').keydown(function(e) {
+            counter.down++;
+            $('#result2').html(counter.down); 
+        });
+        //keypress 함수는 한글에는 동작하지 않음 균등한 구현을 위해서 keyup사용
+
+        //keycode
+        $('#key_listener').keyup(function(e) {
+            $('#result3').html(e.keyCode);
+
+            if(e.keyCode == 13){
+                $('#result4').html('엔터키가 눌러졌습니다.');
+            }
+            else{
+                $('#result4').html('none');
+            }
+        });
+    });
+    </script>
+</body>
+</html>

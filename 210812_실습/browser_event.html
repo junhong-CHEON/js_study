@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event</title>
+    <style>
+    * {width: 100%; height: 100%; padding: 0; margin: 0;}
+    #container {text-align: center; font-size: 30px;}
+    .box1 {background-color: #f00;}
+    .box2 {background-color: #0f0;}
+    .box3 {background-color: #00f;}
+    .box4 {background-color: #ff0;}
+    .box{
+        height: 5000px;
+        background: linear-gradient(to bottom, #2126a8 0%, #cdcfd6 100%);
+    }
+    </style>
+</head>
+<body>
+    <div id="container"><div class='box1'></div></div>
+    <div id="win_scroll"><div class='box'></div></div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+    //브라우저 해상도 판정
+    function check_responsive() {
+        let w = $(window).width();
+        let responsive = 'xs';
+
+        if (w >= 1200) {responsive = 'lg';}
+        else if(w >= 992) {responsive = 'md';}
+        else if(w >= 768) {responsive = 'sm';}
+
+        return responsive;
+    }
+    //브라우저 크기에 따라 동작할 함수
+    function set_responsive() {
+        let responsive = check_responsive();
+
+        switch(responsive){
+            case 'xs':
+                $('#container').html('<div class="box1"></div>');
+                break;
+            case 'sm':
+                $('#container').html('<div class="box2"></div>');
+                break;
+            case 'md':
+                $('#container').html('<div class="box3"></div>');
+                break;
+            default:
+                $('#container').html('<div class="box4"></div>');
+                break;
+        }
+    }
+    $(function() {
+        set_responsive();
+
+        $(window).scroll(function(){
+            if($(window).height() + $(window).scrollTop() == $(document).height()) {
+                console.log('끝에 도착함');
+                let tag = $('#win_scroll').html();
+                tag += '<div class="box"></div>';
+                $('#win_scroll').html(tag);
+            }
+        })
+    });
+    </script>
+</body>
+</html>

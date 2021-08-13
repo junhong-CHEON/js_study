@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery</title>
+    <style type = 'text/css'>
+        * {padding: 5px; margin: 3px auto; list-style: none;}
+
+        div#container {border: 3px dashed #ff00ff;}
+
+        div#container > h1#title {border: 3px dashed #ff6600;}
+
+        div#container div.box {border: 3px solid #ffff00;}
+
+        div#container > ul {border: 3px dashed #00ff00;}
+
+        div#container > ul > li {border: 3px dotted #3438af;}
+
+        p,pre {border: 1px dashed #555;}
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1 id="title"></h1>
+        <div class="box"></div>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <p></p>
+        <pre></pre>
+        <pre name='source'></pre>
+
+    </div>    
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type='text/javascript'>
+        $(function() {
+            $('#title').html('두번째 제목');
+
+            $('div#container > h1#title').html('제목입니다.');
+
+            $('div#container div.box').html('안녕하세요.');
+
+            $('ul > li').html('목록입니다.');
+
+            $('ul > li:eq(1)').html('jQuery 고유의 방식도 있습니다.');
+
+            $('p, pre').html('다중요소 선택');
+
+            $('pre[name = "source"]').html('CSS2의 선택자');
+
+            $('ul > li:first-child').html('Firsr_child');
+            $('ul > li:last-child').html('Last-child')
+
+        });
+    </script>
+</body>
+</html>
